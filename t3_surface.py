@@ -59,10 +59,17 @@ pos[:, :, 0] = X; pos[:, :, 1] = Y
 rv = multivariate_normal([mu_x, mu_y],cov)
 
 
+
+
 fig = go.Figure( data=[go.Surface(z=rv.pdf(pos), x=X, y=Y)] )
-fig.update_layout(title='Bivariate-Gaussian-Distribution-Between-LogPrice-Points', autosize=False,
-                   width=750, height=750,
-                  margin=dict(l=65, r=50, b=65, t=90))
+fig.update_layout(title='Bivariate-Gaussian-Distribution-Between-LogPrice-Points'
+                  ,autosize=False
+                  ,width=750, height=750
+                  ,margin=dict(l=65, r=50, b=65, t=90)
+                  ,scene = dict(
+                    xaxis_title='LOG_PRICES (x)',
+                    yaxis_title='POINTS (y)',
+                    zaxis_title='PDF (z)'))
 fig.show()
 
 
